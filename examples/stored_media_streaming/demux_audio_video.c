@@ -123,7 +123,7 @@ int gst_main (char* fileData)
   app->timer = g_timer_new();
   #endif
 
- app->pipeline = gst_parse_launch("filesrc name=file ! qtdemux name=demux demux.audio_0 ! queue ! aacparse ! mpegtsmux ! fdsink name=    audiosink  demux.video_0 ! queue ! h264parse ! avimux ! fdsink name=videosink ",NULL); 
+ app->pipeline = gst_parse_launch("filesrc name=file ! qtdemux name=demux demux.audio_0 ! queue ! aacparse ! mpegtsmux ! fdsink name=    audiosink  demux.video_0 ! queue ! h264parse ! flvmux ! fdsink name=videosink ",NULL); 
   g_assert (app->pipeline);
 
   bus = gst_pipeline_get_bus (GST_PIPELINE (app->pipeline));

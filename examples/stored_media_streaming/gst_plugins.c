@@ -312,7 +312,7 @@ int gstreamer_main(char* input)
         
         if(strcmp (input,"AUDIO_VIDEO") == 0) {        
         printf("audio and video pipeline\n");
-        app->pipeline = gst_parse_launch("appsrc name=videosource ! avidemux ! h264parse ! queue ! avdec_h264 ! autovideosink  appsrc name=audiosource ! tsdemux ! queue ! decodebin ! audioconvert ! audioresample ! autoaudiosink",NULL);
+        app->pipeline = gst_parse_launch("appsrc name=videosource ! flvdemux ! h264parse ! queue ! vaapidecode ! autovideosink  appsrc name=audiosource ! tsdemux ! queue ! decodebin ! audioconvert ! audioresample ! autoaudiosink",NULL);
 
        app->src = gst_bin_get_by_name (GST_BIN(app->pipeline), "audiosource");
        g_assert(app->src);
@@ -337,7 +337,7 @@ int gstreamer_main(char* input)
         }
         else if(strcmp (input,"VIDEO") == 0) {       
           printf("video pipeline \n");       
-	  app->pipeline = gst_parse_launch("appsrc name=videosource ! avidemux ! h264parse ! queue ! avdec_h264 ! autovideosink",NULL);
+	  app->pipeline = gst_parse_launch("appsrc name=videosource ! flvdemux ! h264parse ! queue ! vaapidecode ! autovideosink",NULL);
           app->videosrc = gst_bin_get_by_name (GST_BIN(app->pipeline), "videosource");
           g_assert(app->videosrc);
           g_signal_connect (app->videosrc, "need-data", G_CALLBACK (start_feed_video), app);
