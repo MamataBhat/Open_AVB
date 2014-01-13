@@ -20,12 +20,11 @@ EXTRA_FLAGS+=-L ../../lib/igb/ -ligb -lpci -lrt -lpthread -lm  -lgstapp-1.0
 
 #For Talker uncomment the below:
 
-#libgstplugin_la_SOURCES = gstavbsink.c gstavbsink.h ../../../common/avb.c ../../../common/avb.h ../../../../lib/igb/igb.h
-
+#libgstplugin_la_SOURCES = gstavbsink_talker.c gstavbsink_talker.h ../../../common/avbtp.c ../../../common/avbtp.h ../../../../lib/igb/igb.h
 
 #For Listener uncomment the below:
 
-#libgstplugin_la_SOURCES = gst_avb_playbin.c gst_avb_playbin.h ../../../common/avb.c ../../../common/avb.h ../../../../lib/igb/igb.h gst_app_src.c
+#libgstplugin_la_SOURCES = gstavbsrc_listener.c gstavbsrc_listener.h ../../../common/avbtp.c ../../../common/avbtp.h ../../../../lib/igb/igb.h
 
 # compiler and linker flags used to compile this plugin, set in configure.ac
 libgstplugin_la_CFLAGS = $(GST_CFLAGS) 
